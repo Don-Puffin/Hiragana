@@ -1,13 +1,15 @@
+
+
 import { useState } from 'react';
 import Image from 'next/image';
 
-export default function Cat() {
+export default function Bird() {
   const [imageIndex, setImageIndex] = useState(0);
 
   const images = [
     '/enaga-happy.png',
     '/enaga-neutral.png',
-    '/enaga-sad.png',
+    // '/enaga-sad.png',
   ];
 
   const handleClick = () => {
@@ -15,13 +17,15 @@ export default function Cat() {
   };
 
   return (
-    <div onClick={handleClick}>
-      <Image 
+    <div onClick={handleClick} className="cursor-pointer">
+      <img
         src={images[imageIndex]} 
-        alt="Picture of a cat" 
-        width={1200} 
-        height={1200} 
+        alt="Picture of Enaga-Chan" 
+        className="h-96 "
       />
     </div>
   );
+
+
+
 }
