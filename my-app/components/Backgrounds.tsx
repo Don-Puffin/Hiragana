@@ -1,3 +1,5 @@
+//random background is called for each 'game'
+
 'use client'
 import { useEffect, useState } from 'react';
 
@@ -9,6 +11,7 @@ const BackgroundImages = [
   '/gameBackgrounds/trees6.png'
 ];
 
+// 'children' prop is a special one (apparently), allows you to use the component as a parent component and pass in other components.
 const Background = ({ children }) => {
   const [background, setBackground] = useState('');
 
