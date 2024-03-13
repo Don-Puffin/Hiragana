@@ -9,7 +9,7 @@ export default function Bird() {
   const images = [
     '/enaga-happy.png',
     '/enaga-neutral.png',
-    // '/enaga-sad.png',
+    '/enaga-sad.png',
   ];
 
   const handleClick = () => {
