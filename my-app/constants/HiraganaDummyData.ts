@@ -1,0 +1,23 @@
+export const hiraganaDummyData = [
+    { hiragana: "あ", english: "a" },
+    { hiragana: "い", english: "i" },
+    { hiragana: "う", english: "u" },
+    { hiragana: "え", english: "e" },
+    { hiragana: "お", english: "o" },
+    { hiragana: "か", english: "ka" },
+    { hiragana: "き", english: "ki" },
+    { hiragana: "く", english: "ku" },
+    { hiragana: "け", english: "ke" },
+    { hiragana: "こ", english: "ko" },
+    { hiragana: "さ", english: "sa" },
+    { hiragana: "し", english: "shi" },
+    { hiragana: "す", english: "su" },
+    { hiragana: "せ", english: "se" },
+    { hiragana: "そ", english: "so" },
+    { hiragana: "た", english: "ta" },
+    { hiragana: "ち", english: "chi" },
+    { hiragana: "つ", english: "tsu" },
+    { hiragana: "て", english: "te" },
+    { hiragana: "と", english: "to" },
+  ];
+

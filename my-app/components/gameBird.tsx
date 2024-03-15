@@ -1,5 +1,9 @@
 // returns happy, sad or neutral birdState. ClassName is passed as a prop to get the bird jumping
-export default function GameBird({state, className}) {
+export default function GameBird({state, className}: {
+  state: 'happy' | 'neutral' | 'sad', 
+  className?: string,
+
+}) {
     const images = {
         happy: '/enaga-happy.png',
         neutral: '/enaga-neutral.png',
@@ -11,7 +15,7 @@ export default function GameBird({state, className}) {
             <img
             src={images[state]}
             alt="Enaga-Chan"
-            className="h-96"
+            className="h-96 "
             />
         </div>
       )
