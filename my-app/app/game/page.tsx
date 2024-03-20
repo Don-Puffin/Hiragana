@@ -1,7 +1,7 @@
 "use client";
 import { useSearchParams } from "next/navigation"
-import { hiraganaDummyData } from "@/constants/HiraganaDummyData"
 import { katakanaDummyData } from "@/constants/KatakanaDummyData"
+import {useFetchHiraganaData} from "@/constants/HiraganaDummyData"
 import { kanjiDummyData } from "@/constants/KanjiDummyData"
 import Background from "@/components/Backgrounds"
 import GameBird from "@/components/gameBird"
@@ -9,9 +9,18 @@ import { useState, useEffect } from "react"
 import Question from "@/components/Question"
 import GameGrid from "@/components/GameGrid"
 
+// const [hiraganaData, setHiraganaData] = useState(null);
+
+// useEffect(() => {
+//     fetch('http://localhost:8080/generateHiragana?size=20')
+//         .then(response => response.json())
+//         .then(data => setHiraganaData(data))
+//         .catch(error => console.error('Error:', error));
+// }, []);
+
 const identifyAndReturnAlphabet = (alphabet: string) => {
     if (alphabet === "hiragana") {
-        return hiraganaDummyData
+        return 
     } else if (alphabet === "katakana") {
         return katakanaDummyData
     } else if (alphabet === "kanji") {
@@ -27,20 +36,37 @@ const Page = () => {
     const [birdState, setBirdState] = useState<"happy" | "neutral" | "sad">("neutral")
     const [questionCharacter, setQuestionCharacter] = useState<string | undefined | null>("")
     const [remainingCharacters, setRemainingCharacters] = useState<string[]>(); //copy of main array, used to keep track of which characters have not been shown yet
+    const [japaneseOnly, setJapaneseOnly] = useState<string[]>([])
+    const [combined, setCombined] = useState<{ english: string, japanese: string }[]>([])
+
+
+    const { data , loading, error } = useFetchHiraganaData(`http://localhost:8080/generate-${alphabet}?size=20`) 
+
+    console.log(data)
 
     useEffect(() => {
         if (!alphabet) return;
+        if (!data) return;
+        let arr = [] as { english: string, japanese: string }[];
+        const arrayOfObjects = Object.entries(data).forEach(([key, value]) => {
+            console.log(key, value);
+            arr.push({
+                english: value,
+                japanese: key
+            })
+        });
 
-        const alphabetData = identifyAndReturnAlphabet(alphabet);
-        if (!alphabetData) return;
-
-        const englishData = alphabetData.map((character) => character.english);
+        setCombined(arr);
+        const japaneseData = arr.map((character) => character.japanese);
+        const englishData = arr.map((character) => character.english);
         setOnlyEnglish(englishData);
-        setRemainingCharacters([...englishData]);
-    }, [alphabet]);
+        setJapaneseOnly(japaneseData);
+        setRemainingCharacters(englishData);
+    }, [alphabet, data]);
 
 
     useEffect(() => {
+        console.log(remainingCharacters)
         if (remainingCharacters && remainingCharacters.length > 0) {
             const randomIndex = Math.floor(Math.random() * remainingCharacters.length);
             const newCharacter = remainingCharacters[randomIndex];
@@ -56,16 +82,18 @@ const Page = () => {
     }
 
     useEffect(() => {
-        console.log("Remaining characters", remainingCharacters);      
+        // console.log("Remaining characters", remainingCharacters);      
     }, [remainingCharacters]);
 
 const handleButtonClick = (characterClicked: string) => {
-    console.log("Button clicked", characterClicked);
-    console.log(remainingCharacters);
+    console.log("Question character", questionCharacter);
+    console.log("Character clicked", characterClicked);
 
-    const pairing = identifyAndReturnAlphabet(alphabet!)?.find((character) => character.english === questionCharacter) as { [key: string]: string };
+    const pairing = combined?.find((character) => character.english === questionCharacter) as { [key: string]: string };
 
-    if (characterClicked === pairing?.[alphabet!]) {
+    console.log("Pairing", pairing)
+
+    if (characterClicked === pairing?.japanese!) {
         setBirdState("happy");
         setTimeout(() => {
             setBirdState("neutral");
@@ -78,7 +106,7 @@ const handleButtonClick = (characterClicked: string) => {
         }, 1000);
     }
 }
-
+// end game screen for the birdy boy to be well pleased and shit
     if (remainingCharacters?.length === 0) {
         return (
             <Background>
@@ -94,14 +122,15 @@ const handleButtonClick = (characterClicked: string) => {
     if (!alphabet) return null;
 
     return (
-        <Background>
+  <Background>
         <h1 className="text-4xl font-bold text-white text-center">{alphabet}</h1>
             <div className="flex gap-10 items-center justify-center">
             <GameBird state={birdState}/>
             <Question character={questionCharacter} />
             </div>
-            <GameGrid currentAlphabet={alphabet} onButtonClick={handleButtonClick} />
+            <GameGrid currentAlphabet={japaneseOnly} onButtonClick={handleButtonClick} />
         </Background>
+        
     )
 }
 
