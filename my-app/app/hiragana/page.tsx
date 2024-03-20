@@ -1,12 +1,10 @@
 import { NextPage } from "next";
 import Link from 'next/link';
-import NavBar from "../../components/NavBar";
 
 const hiraganaIndex: NextPage = () => {
   return (
     
     <main className="flex flex-col items-center justify-center h-screen space-y-5">
-      <NavBar />
       <div className="space-y-3">
         <h2 className="text-2xl font-bold">Learn</h2>
         <div className="grid grid-cols-3 gap-4">

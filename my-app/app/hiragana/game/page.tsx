@@ -9,7 +9,6 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { NextPage } from "next";
-import NavBar from "@/components/NavBar";
 import Background from "@/components/Backgrounds"
 import GameGrid from "@/components/GameGrid"
 import Question from "@/components/Question"
@@ -84,7 +83,6 @@ const hiraganaGame  : NextPage = () => {
   
   return (
     <Background>
-      <NavBar />
       <main className="min-h-screen flex items-center justify-center">
         <GameBird state={birdState} className = {gameIsComplete ? 'animate-bounce' : ""} />
         <Question character={questionCharacter} />

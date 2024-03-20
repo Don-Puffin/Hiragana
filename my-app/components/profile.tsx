@@ -5,15 +5,15 @@ const ProfileComponent = () => {
             <div className="flex flex-col space-y-4">
                 <div className="border p-2">
                     <h3 className="font-bold">Name:</h3>
-                    <p>John Doe</p>
+                    <h3>John Doe</h3>
                 </div>
                 <div className="border p-2">
                     <h3 className="font-bold">Email:</h3>
-                    <p>johndoe@example.com</p>
+                    <h3>johndoe@example.com</h3>
                 </div>
                 <div className="border p-2">
                     <h3 className="font-bold">Score:</h3>
-                    <p>100</p>
+                    <h3>100</h3>
                 </div>
             </div>
             <button className="bg-blue-500 text-white rounded px-4 py-2 mt-4">Logout</button>

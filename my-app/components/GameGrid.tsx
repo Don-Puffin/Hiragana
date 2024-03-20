@@ -1,27 +1,58 @@
 //produces the 'bingo card' style grid which users need to select the right answer from.
 'use client'
 import { hiraganaDummyData } from '@/constants/HiraganaDummyData';
+import { kanjiDummyData } from '@/constants/KanjiDummyData';
+import { katakanaDummyData } from '@/constants/KatakanaDummyData';
 
-const GameGrid = ({ onButtonClick }: {
-  onButtonClick: (hiragana: string) => void;
+const GameGrid = ({ onButtonClick, currentAlphabet }: {
+  onButtonClick: (selectedItem: string) => void;
+  currentAlphabet: string;
 }) => {
   return (
-    <div className="grid grid-cols-4 gap-0">
-      {/* maps over the dummy data to produce the grid.  */}
-      {hiraganaDummyData
-      .map((characterClicked, index) => (
-        <button
-          key={index}
-          // below adds alternating colours to the grid and hover over effects
-          className={`font-bold py-2 px-4 m-1 rounded ${index % 2 === 0 ? 'bg-black hover:bg-gray-700 text-white' : 'bg-white hover:bg-gray-200 text-black'}`}
-          // calls characterclicked when button clicked (see hiragana/game/page.tsx )
-          onClick={() => onButtonClick(characterClicked.hiragana)}
-        >
-          {characterClicked.hiragana}
-        </button>
-      ))}
+    <div className="relative">
+      <img src="tree grid 2.png" className="h-96 mx-auto" style={{ position: 'relative', zIndex: '1' }} />
+      <div className="grid absolute grid-cols-4 gap-0 inset-16 mx-auto h-1/2 w-1/5" style={{ position: 'absolute', zIndex: '2' }}>
+        {
+          currentAlphabet === 'hiragana' ? (
+            hiraganaDummyData.map((characterClicked, index) => (
+              <button
+                key={index}
+                // below adds alternating colours to the grid and hover over effects
+                className={`font-bold rounded py-2.5 px-4 m-1 text-black hover:font-bold transition-transform hover:transform hover:scale-150`}                // calls characterclicked when button clicked (see hiragana/game/page.tsx )
+                // calls characterclicked when button clicked (see hiragana/game/page.tsx )
+                onClick={() => onButtonClick(characterClicked.hiragana)}
+              >
+                {characterClicked.hiragana}
+              </button>
+            ))
+          ) : currentAlphabet === 'kanji' ? (
+            kanjiDummyData.map((characterClicked, index) => (
+              <button
+                key={index}
+                // below adds alternating colours to the grid and hover over effects
+                className={`font-bold rounded py-2.5 px-4 m-1 text-black hover:font-bold transition-transform hover:transform hover:scale-150`}                // calls characterclicked when button clicked (see hiragana/game/page.tsx )
+                onClick={() => onButtonClick(characterClicked.kanji)}
+              >
+                {characterClicked.kanji}
+              </button>
+            ))
+          ) : (
+            katakanaDummyData.map((characterClicked, index) => (
+              <button
+                key={index}
+                // below adds alternating colours to the grid and hover over effects
+                className={`font-bold rounded py-2.5 px-4 m-1 text-black hover:font-bold transition-transform hover:transform hover:scale-150`}                // calls characterclicked when button clicked (see hiragana/game/page.tsx )
+                // calls characterclicked when button clicked (see hiragana/game/page.tsx )
+                onClick={() => onButtonClick(characterClicked.katakana)}
+              >
+                {characterClicked.katakana}
+              </button>
+            ))
+          )
+        }
+      </div>
     </div>
   );
 }
 
-export default GameGrid; 
+export default GameGrid;

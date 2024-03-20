@@ -25,7 +25,9 @@ const Background = ({ children }) => {
         backgroundImage: `url(${background})`, 
         backgroundSize: 'cover', 
         backgroundPosition: 'center',
-    }}>
+    }}
+      className="h-screen"
+    >
       {children}
     </div>
   );

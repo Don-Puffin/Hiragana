@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image';
 import { useState } from 'react';
-import NavBar from '/components/NavBar';
 
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string | null>(null);
@@ -39,7 +38,6 @@ export default function Home() {
 
   return (
     <main className="relative">
-      <NavBar />
       <div className="flex items-center justify-center bg-cover bg-center bg-no-repeat w-full h-screen" style={{ backgroundImage: 'url("/trees6.png")' }}></div>
       <div className="absolute bottom-20 left-70">
         {/* image of enaga-chan */}
@@ -50,7 +48,7 @@ export default function Home() {
       {/* question card */}
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="w-1/4 h-1/2 bg-white rounded-xl shadow-xl flex flex-col items-center justify-center">      
-          <p className="text-lg">Find the pronunciation for:</p>
+          <h2 className="text-lg">Find the pronunciation for:</h2>
           <div className="text-9xl font-boldmt-8 m-4">あ</div>
           <div className="flex gap-4 mt-8">
             {/* question card */}
