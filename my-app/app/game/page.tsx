@@ -9,14 +9,6 @@ import { useState, useEffect } from "react"
 import Question from "@/components/Question"
 import GameGrid from "@/components/GameGrid"
 
-// const [hiraganaData, setHiraganaData] = useState(null);
-
-// useEffect(() => {
-//     fetch('http://localhost:8080/generateHiragana?size=20')
-//         .then(response => response.json())
-//         .then(data => setHiraganaData(data))
-//         .catch(error => console.error('Error:', error));
-// }, []);
 
 const identifyAndReturnAlphabet = (alphabet: string) => {
     if (alphabet === "hiragana") {
@@ -38,7 +30,7 @@ const Page = () => {
     const [remainingCharacters, setRemainingCharacters] = useState<string[]>(); //copy of main array, used to keep track of which characters have not been shown yet
     const [japaneseOnly, setJapaneseOnly] = useState<string[]>([])
     const [combined, setCombined] = useState<{ english: string, japanese: string }[]>([])
-
+    const [incorrectAnswers, setIncorrectAnswers] = useState<string[]>([]); //sets a variable for answers
 
     const { data , loading, error } = useFetchHiraganaData(`http://localhost:8080/generate-${alphabet}?size=20`) 
 
@@ -104,20 +96,30 @@ const handleButtonClick = (characterClicked: string) => {
         setTimeout(() => {
             setBirdState("neutral");
         }, 1000);
+        setIncorrectAnswers(prevIncorrectAnswers => [...prevIncorrectAnswers, questionCharacter]); //sets inccorect answers to the array
     }
 }
 // end game screen for the birdy boy to be well pleased and shit
-    if (remainingCharacters?.length === 0) {
-        return (
-            <Background>
-                <h1 
-                    className="h-screen flex justify-center items-center flex-col text-4xl font-bold text-white"
-                >                <GameBird state="happy" className="animate animate-bounce"/>
-
-                    Congratulations! You have completed the game!</h1>
-            </Background>
-        )
-    }
+if (remainingCharacters?.length === 0) {
+    return (
+      <Background>
+        <h1 className="h-screen flex justify-center items-center flex-col text-4xl font-bold text-white">
+          <GameBird state="happy" className="animate animate-bounce"/>
+          Congratulations! You have completed the game!
+          {incorrectAnswers.length > 0 && (
+            <div>
+              <h2>Incorrect Answers:</h2>//maps over the incorrect answers array
+              <ul>
+                {incorrectAnswers.map((answer, index) => (
+                  <li key={index}>{answer}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </h1>
+      </Background>
+    )
+  }
 
     if (!alphabet) return null;
 
