@@ -4,7 +4,6 @@
 import { useEffect, useState } from 'react';
 
 const BackgroundImages = [
-  '/gameBackgrounds/city.png',
   '/gameBackgrounds/park.png',
   '/gameBackgrounds/garden.png',
   '/gameBackgrounds/fuji.png',

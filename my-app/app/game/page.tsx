@@ -96,41 +96,66 @@ const handleButtonClick = (characterClicked: string) => {
         setTimeout(() => {
             setBirdState("neutral");
         }, 1000);
-        setIncorrectAnswers(prevIncorrectAnswers => [...prevIncorrectAnswers, questionCharacter]); //sets inccorect answers to the array
+        setIncorrectAnswers(prevIncorrectAnswers => {
+            const newIncorrectAnswers = [...prevIncorrectAnswers, characterClicked];
+            return Array.from(new Set(newIncorrectAnswers)); // remove duplicates
+        });
     }
 }
 // end game screen for the birdy boy to be well pleased and shit
 if (remainingCharacters?.length === 0) {
+    const chunks = [];
+    for (let i = 0; i < incorrectAnswers.length; i += 10) {
+      chunks.push(incorrectAnswers.slice(i, i + 10));
+    }
+
     return (
       <Background>
-        <h1 className="h-screen flex justify-center items-center flex-col text-4xl font-bold text-white">
-          <GameBird state="happy" className="animate animate-bounce"/>
-          Congratulations! You have completed the game!
-          {incorrectAnswers.length > 0 && (
-            <div>
-              <h2>Incorrect Answers:</h2>//maps over the incorrect answers array
-              <ul>
-                {incorrectAnswers.map((answer, index) => (
-                  <li key={index}>{answer}</li>
+        <h1 className="h-screen flex justify-center items-center flex-col font-bold text-white">
+          <GameBird state="happy" className="absolute animate animate-bounce mb-60"/>
+          <img src="gridempty.png" className="mt-80 h-1/2"/>
+          <div className="absolute mt-80  text-center">
+            <h2 className="text-green-600 text-3xl">Congratulations!</h2>
+            <br/>
+            <h2 className="text-black text-lg">You have completed the game!</h2>
+            <br/>
+            {incorrectAnswers.length > 0 ? (
+              <div>
+                <h2 className="text-black text-lg">Keep working on these:</h2>
+                {chunks.map((chunk, index) => (
+                  <h2 className="text-red-500 text-center gap-4 p-2 flex flex-row" key={index}>
+                    {chunk.map((answer, idx) => (
+                      <div className="mx-auto text-2xl" key={idx}>{answer}</div>
+                    ))}
+                  </h2>
                 ))}
-              </ul>
-            </div>
-          )}
+              </div>
+            ) : (
+              <h2 className="text-green-600 text-lg">You made no mistakes!</h2>
+            )}
+            <button className="mt-2 text-white bg-yellow-700 hover:bg-white hover:border-yellow-700 hover:text-yellow-700 border-2 border-white p-2 rounded-lg" onClick={() => window.location.reload()}>Play Again!</button>
+          </div>
         </h1>
       </Background>
-    )
+    );
   }
-
     if (!alphabet) return null;
 
     return (
   <Background>
-        <h1 className="text-4xl font-bold text-white text-center">{alphabet}</h1>
+        <br/>
+    <br/>
+    <div className="">
+        <h1 className="text-5xl font-bold text-black-600 text-center ">{alphabet.toUpperCase()} GAME!</h1>
+        <br/><br/><br/><br/><br/>
+        
             <div className="flex gap-10 items-center justify-center">
-            <GameBird state={birdState}/>
-            <Question character={questionCharacter} />
+            <GameBird state={birdState} className="absolute mr-60 mt-36 drop-shadow-2xl z-10"/>
+            <Question character={questionCharacter} className="absolute top-40 ml-60 mx-auto mt-28"/>            </div>
+            <GameGrid currentAlphabet={japaneseOnly} onButtonClick={handleButtonClick} className="mt-40 drop-shadow-2xl"/>
             </div>
-            <GameGrid currentAlphabet={japaneseOnly} onButtonClick={handleButtonClick} />
+            <img src="tree grid 3.png" className="h-1/2 mx-auto"/>
+
         </Background>
         
     )
