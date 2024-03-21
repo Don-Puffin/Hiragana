@@ -2,6 +2,7 @@
 
 'use client'
 import { useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 
 const BackgroundImages = [
   '/gameBackgrounds/park.png',
@@ -11,7 +12,7 @@ const BackgroundImages = [
 ];
 
 // 'children' prop is a special one (apparently), allows you to use the component as a parent component and pass in other components.
-const Background = ({ children }) => {
+const Background = ({ children }: { children: ReactNode }) =>{
   const [background, setBackground] = useState('');
 
   useEffect(() => {

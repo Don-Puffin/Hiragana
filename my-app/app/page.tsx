@@ -39,7 +39,7 @@ const GameCard = ({ title, link, bgImage }: {
         textDecoration: 'none', // Removes underline on hover
         textShadow: '2px 2px 4px #000000'
       }}
-      href={`/game?alphabet=${link}`}
+      href={`/${link}`}
     >
       {title}
     </Link>
