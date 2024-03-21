@@ -1,23 +1,55 @@
-export const hiraganaDummyData = [
-    { hiragana: "あ", english: "a" },
-    { hiragana: "い", english: "i" },
-    { hiragana: "う", english: "u" },
-    { hiragana: "え", english: "e" },
-    { hiragana: "お", english: "o" },
-    { hiragana: "か", english: "ka" },
-    { hiragana: "き", english: "ki" },
-    { hiragana: "く", english: "ku" },
-    { hiragana: "け", english: "ke" },
-    { hiragana: "こ", english: "ko" },
-    { hiragana: "さ", english: "sa" },
-    { hiragana: "し", english: "shi" },
-    { hiragana: "す", english: "su" },
-    { hiragana: "せ", english: "se" },
-    { hiragana: "そ", english: "so" },
-    { hiragana: "た", english: "ta" },
-    { hiragana: "ち", english: "chi" },
-    { hiragana: "つ", english: "tsu" },
-    { hiragana: "て", english: "te" },
-    { hiragana: "と", english: "to" },
-  ];
+"use client";
+import { useState, useEffect } from "react";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
+
+interface HiraganaData {
+    hiragana: string;
+    english: string;
+} 
+
+//  const useFetchHiraganaData = () => {
+   
+//     const [hiraganaData, setHiraganaData] = useState<HiraganaData[]>([]);
+
+//     useEffect(() => {
+//         fetch('http://localhost:8080/generateHiragana?size=20')
+//             .then(response => response.json())
+//             .then((data: Record<string, string>) => {
+//                 const transformedData = Object.entries(data).map(([hiragana, english]: [string, string]) => ({ hiragana, english }));
+//                 console.log(transformedData);
+//                 setHiraganaData(transformedData);
+//             })
+//             .catch(error => console.error('Error:', error));
+//     }, []);
+
+//     return hiraganaData;
+// }
+
+// export default useFetchHiraganaData;
+
+export const useFetchHiraganaData = <T>(url: string, options?: AxiosRequestConfig) => {
+    const [data, setData] = useState<T | null>(null);
+    const [error, setError] = useState<Error | null>(null);
+    const [loading, setLoading] = useState(true);
+
+    const fetchData = async () => {
+        setLoading(true);
+
+        try {
+            const response: AxiosResponse<T> = await axios(url, options);
+            setData(response.data);
+        } catch (error: any) {
+            setError(error);
+        } finally {
+            setLoading(false);
+        }
+    }
+
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    return { data, error, loading }
+}
