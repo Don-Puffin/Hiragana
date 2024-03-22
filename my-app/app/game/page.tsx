@@ -23,7 +23,7 @@ const identifyAndReturnAlphabet = (alphabet: string) => {
 const Page = () => {
     const originParams = useSearchParams();
     const alphabet = originParams!.get("alphabet");
-
+    const capitalizedAlphabet = alphabet.charAt(0).toUpperCase() + alphabet.slice(1);
     const [onlyEnglish, setOnlyEnglish] = useState<string[]>([])
     const [birdState, setBirdState] = useState<"happy" | "neutral" | "sad">("neutral")
     const [questionCharacter, setQuestionCharacter] = useState<string | undefined | null>("")
@@ -143,10 +143,11 @@ if (remainingCharacters?.length === 0) {
 
     return (
   <Background>
-        <br/>
-    <br/>
+     
     <div className="">
-        <h1 className="text-5xl font-bold text-black-600 text-center ">{alphabet.toUpperCase()} GAME!</h1>
+      <div className="opacity-80 rounded-lg bg-white p-4">
+        <h1 className="text-5xl font-bold text-yellow-600 z-10 text-center ">{capitalizedAlphabet} Challenge! </h1>
+        </div>
         <br/><br/><br/><br/><br/>
         
             <div className="flex gap-10 items-center justify-center">

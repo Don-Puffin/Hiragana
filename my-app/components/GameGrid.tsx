@@ -13,7 +13,7 @@ const GameGrid: React.FC<GameGridProps> = ({ onButtonClick, currentAlphabet, cla
         {currentAlphabet.map((characterClicked, index) => (
           <button
             key={index}
-            className={`font-bold rounded py-1.5 px-4 m-1 text-2xl  text-black hover:font-bold transition-transform hover:transform hover:scale-150 items-center`}
+            className={`font-bold rounded py-2 px-4 m-0.5 text-lg  text-black hover:font-bold transition-transform hover:transform hover:scale-150 items-center`}
             onClick={() => onButtonClick(characterClicked)}
           >
             {characterClicked}

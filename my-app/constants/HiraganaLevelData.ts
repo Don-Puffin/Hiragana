@@ -1,73 +1,148 @@
 export const hiraganaLevelData = [
-    { katakana: "あ", english: "a" },
-    { katakana: "い", english: "i" },
-    { katakana: "う", english: "u" },
-    { katakana: "え", english: "e" },
-    { katakana: "お", english: "o" },
-    { katakana: "か", english: "ka" },
-    { katakana: "き", english: "ki" },
-    { katakana: "く", english: "ku" },
-    { katakana: "け", english: "ke" },
-    { katakana: "こ", english: "ko" },
-    { katakana: "さ", english: "sa" },
-    { katakana: "し", english: "shi" },
-    { katakana: "す", english: "su" },
-    { katakana: "せ", english: "se" },
-    { katakana: "そ", english: "so" },
-    { katakana: "た", english: "ta" },
-    { katakana: "ち", english: "chi" },
-    { katakana: "つ", english: "tsu" },
-    { katakana: "て", english: "te" },
-    { katakana: "と", english: "to" },
-    { katakana: "な", english: "na" },
-    { katakana: "に", english: "ni" },
-    { katakana: "ぬ", english: "nu" },
-    { katakana: "ね", english: "ne" },
-    { katakana: "の", english: "no" },
-    { katakana: "は", english: "ha" },
-    { katakana: "ひ", english: "hi" },
-    { katakana: "ふ", english: "fu" },
-    { katakana: "へ", english: "he" },
-    { katakana: "ほ", english: "ho" },
-    { katakana: "ま", english: "ma" },
-    { katakana: "み", english: "mi" },
-    { katakana: "む", english: "mu" },
-    { katakana: "め", english: "me" },
-    { katakana: "も", english: "mo" },
-    { katakana: "や", english: "ya" },
-    { katakana: "ゆ", english: "yu" },
-    { katakana: "よ", english: "yo" },
-    { katakana: "ら", english: "ra" },
-    { katakana: "り", english: "ri" },
-    { katakana: "る", english: "ru" },
-    { katakana: "れ", english: "re" },
-    { katakana: "ろ", english: "ro" },
-    { katakana: "わ", english: "wa" },
-    { katakana: "を", english: "wo" },
-    { katakana: "ん", english: "n" },
-    { katakana: "が", english: "ga" },
-    { katakana: "ぎ", english: "gi" },
-    { katakana: "ぐ", english: "gu" },
-    { katakana: "げ", english: "ge" },
-    { katakana: "ご", english: "go" },
-    { katakana: "ざ", english: "za" },
-    { katakana: "じ", english: "ji" },
-    { katakana: "ず", english: "zu" },
-    { katakana: "ぜ", english: "ze" },
-    { katakana: "ぞ", english: "zo" },
-    { katakana: "だ", english: "da" },
-    { katakana: "ぢ", english: "dji" },
-    { katakana: "づ", english: "dzu" },
-    { katakana: "で", english: "de" },
-    { katakana: "ど", english: "do" },
-    { katakana: "ば", english: "ba" },
-    { katakana: "び", english: "bi" },
-    { katakana: "ぶ", english: "bu" },
-    { katakana: "べ", english: "be" },
-    { katakana: "ぼ", english: "bo" },
-    { katakana: "ぱ", english: "pa" },
-    { katakana: "ぴ", english: "pi" },
-    { katakana: "ぷ", english: "pu" },
-    { katakana: "ぺ", english: "pe" },
-    { katakana: "ぽ", english: "po" },
-];
+    {
+        level: 1, 
+        hiragana: [
+            { hiragana: "あ", english: "a" },
+            { hiragana: "い", english: "i" },
+            { hiragana: "う", english: "u" },
+            { hiragana: "え", english: "e" },
+            { hiragana: "お", english: "o" }
+        ]
+    },
+    {  
+        level: 2, 
+        hiragana: [
+        { hiragana: "か", english: "ka" }, 
+        { hiragana: "き", english: "ki" },
+        { hiragana: "く", english: "ku" },
+        { hiragana: "け", english: "ke" },
+        { hiragana: "こ", english: "ko" },
+        ]
+    },
+    {
+        level: 3, 
+        hiragana: [
+        { hiragana: "さ", english: "sa" }, 
+        { hiragana: "し", english: "shi" },
+        { hiragana: "す", english: "su" },
+        { hiragana: "せ", english: "se" },
+        { hiragana: "そ", english: "so" },
+        ]
+    },
+    {
+        level: 4, 
+        hiragana: [
+        { hiragana: "た", english: "ta" }, 
+        { hiragana: "ち", english: "chi" },
+        { hiragana: "つ", english: "tsu" },
+        { hiragana: "て", english: "te" },
+        { hiragana: "と", english: "to" },
+        ]
+    },
+    {
+        level: 5, 
+        hiragana: [
+        { hiragana: "な", english: "na" }, 
+        { hiragana: "に", english: "ni" },
+        { hiragana: "ぬ", english: "nu" },
+        { hiragana: "ね", english: "ne" },
+        { hiragana: "の", english: "no" },
+        ]
+    },
+    {
+        level: 6, 
+        hiragana: [
+        { hiragana: "は", english: "ha" }, 
+        { hiragana: "ひ", english: "hi" },
+        { hiragana: "ふ", english: "fu" },
+        { hiragana: "へ", english: "he" },
+        { hiragana: "ほ", english: "ho" },
+        ]
+    },
+    {
+        level: 7, 
+        hiragana: [
+        { hiragana: "ま", english: "ma" }, 
+        { hiragana: "み", english: "mi" },
+        { hiragana: "む", english: "mu" },
+        { hiragana: "め", english: "me" },
+        { hiragana: "も", english: "mo" },
+        ]
+    },
+    {
+        level: 8, 
+        hiragana: [
+        { hiragana: "や", english: "ya" }, 
+        { hiragana: "ゆ", english: "yu" },
+        { hiragana: "よ", english: "yo" },
+        ]
+    },
+    {
+        level: 9,   
+        hiragana: [
+        { hiragana: "ら", english: "ra" }, 
+        { hiragana: "り", english: "ri" },
+        { hiragana: "る", english: "ru" },
+        { hiragana: "れ", english: "re" },
+        { hiragana: "ろ", english: "ro" },
+        ]
+    },
+    {
+        level: 10, 
+        hiragana: [
+        { hiragana: "わ", english: "wa" }, 
+        { hiragana: "を", english: "wo" },
+        { hiragana: "ん", english: "n" },
+        ]
+    },
+    { 
+        level: 11, 
+        hiragana: [
+        { hiragana: "が", english: "ga" }, 
+        { hiragana: "ぎ", english: "gi" },
+        { hiragana: "ぐ", english: "gu" },
+        { hiragana: "げ", english: "ge" },
+        { hiragana: "ご", english: "go" },
+        ]
+    },
+    { 
+        level: 12, 
+        hiragana: [
+        { hiragana: "ざ", english: "za" }, 
+        { hiragana: "じ", english: "dji" },
+        { hiragana: "ず", english: "dzu" },
+        { hiragana: "ぜ", english: "ze" },
+        { hiragana: "ぞ", english: "zo" },
+        ]
+    },
+    { 
+        level: 13, 
+        hiragana: [
+        { hiragana: "だ", english: "da" }, 
+        { hiragana: "ぢ", english: "ji" },
+        { hiragana: "づ", english: "zu" },
+        { hiragana: "で", english: "de" },
+        { hiragana: "ど", english: "do" },
+        ]
+    },
+    { 
+        level: 14, 
+        hiragana: [
+        { hiragana: "ば", english: "ba" }, 
+        { hiragana: "び", english: "bi" },
+        { hiragana: "ぶ", english: "bu" },
+        { hiragana: "べ", english: "be" },
+        { hiragana: "ぼ", english: "bo" },
+        ]
+    },
+    { 
+        level: 15, 
+        hiragana: [
+        { hiragana: "ぱ", english: "pa" }, 
+        { hiragana: "ぴ", english: "pi" },
+        { hiragana: "ぷ", english: "pu" },
+        { hiragana: "ぺ", english: "pe" },
+        { hiragana: "ぽ", english: "po" },
+        ]
+    },
+]

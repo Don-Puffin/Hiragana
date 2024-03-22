@@ -6,7 +6,7 @@ const items = [
     id: 1,
     title: 'Hiragana',
     link: 'hiragana',
-    bgImage: "https://images.unsplash.com/photo-1623779334493-6a6cdddb517c?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGlyYWdhbmF8ZW58MHx8MHx8fDA%3D",
+    bgImage: "https://kuwashiijapanese.files.wordpress.com/2017/01/screen-shot-2017-01-09-at-7-38-37-pm.png?w=1080",
   }, 
   {
     id: 2,
