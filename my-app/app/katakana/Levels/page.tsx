@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { hiraganaLevelData } from "@/constants/HiraganaLevelData";
+import { KatakanaLevelData } from "@/constants/KatakanaLevelData";
 import { katakanaDummyData } from "@/constants/KatakanaDummyData";
 import { kanjiDummyData } from "@/constants/KanjiDummyData";
 import Background from "@/components/Backgrounds-learn";
@@ -11,8 +11,8 @@ import GameGrid from "@/components/GameGrid";
 
 const identifyAndReturnAlphabet = (alphabet: string) => {
   console.log("Identifying and returning alphabet", alphabet);
-  if (alphabet === "hiragana") {
-    return hiraganaLevelData;
+  if (alphabet === "katakana") {
+    return KatakanaLevelData;
   }
 };
 const ButtonGroup = ({ handleFirstButtonClick, handleButtonClick, questionCharacter, getRandomCharacter, level }) => {
@@ -26,11 +26,11 @@ const ButtonGroup = ({ handleFirstButtonClick, handleButtonClick, questionCharac
       <div style={{ display: "flex", gap: "8px", flexDirection: buttonOrder }}>
         {/* Correct Button */}
         <button className="bg-blue-200" onClick={handleFirstButtonClick}>
-          {hiraganaLevelData
+          {KatakanaLevelData
             .find((levelData: any) => levelData.level === Number(level))
-            ?.hiragana.find(
+            ?.katakana.find(
               (pairing: any) => pairing.english === questionCharacter
-            )?.hiragana}
+            )?.katakana}
         </button>
   
         {/* Incorrect Button */}
@@ -48,7 +48,7 @@ const Page = () => {
   console.log(alphabet);
   console.log(level);
 
-  const LevelData = hiraganaLevelData.find(
+  const LevelData = KatakanaLevelData.find(
     (levelData: any) => levelData.level === Number(level)
   );
   console.log(LevelData);
@@ -72,7 +72,7 @@ const Page = () => {
     );
     console.log(getLevel);
 
-    const englishData = getLevel?.hiragana.map(
+    const englishData = getLevel?.katakana.map(
       (pairing: any) => pairing.english
     );
     console.log(englishData);
@@ -137,19 +137,19 @@ const handleFirstButtonClick = () => {
 
     // const arrayToCheck = identifyAndReturnAlphabet(alphabet!)?.map((level))
 
-    const getArrayOfCorrespondingLevel = hiraganaLevelData.find(
+    const getArrayOfCorrespondingLevel = KatakanaLevelData.find(
       (levelData: any) => levelData.level === level
     );
     console.log(getArrayOfCorrespondingLevel);
     const charactersArrayOfCorrespondingLevel =
-      getArrayOfCorrespondingLevel?.hiragana;
+      getArrayOfCorrespondingLevel?.katakana;
     console.log(charactersArrayOfCorrespondingLevel);
     const pairing = charactersArrayOfCorrespondingLevel?.find(
       (pairing: any) => pairing.english === questionCharacter
     );
     console.log(pairing);
 
-    if (characterClicked === pairing?.hiragana) {
+    if (characterClicked === pairing?.katakana) {
         console.log("Correct!");
         setBirdState("happy");
         setTimeout(() => {
@@ -166,36 +166,36 @@ const handleFirstButtonClick = () => {
   };
 
   console.log(
-    hiraganaLevelData
+    KatakanaLevelData
       .find((levelData: any) => levelData.level === Number(level))
-      ?.hiragana.find((pairing: any) => pairing.english === questionCharacter)
-      ?.hiragana
+      ?.katakana.find((pairing: any) => pairing.english === questionCharacter)
+      ?.katakana
   );
 
   const getRandomCharacter = () => {
-    const levelData = hiraganaLevelData.find(
+    const levelData = KatakanaLevelData.find(
       (levelData: any) => levelData.level === Number(level)
     );
     if (!levelData) return ""; // Ensure level data is found
 
-    const characters = levelData.hiragana.filter(
+    const characters = levelData.katakana.filter(
       (pairing: any) => pairing.english !== questionCharacter
     );
     if (characters.length === 0) return ""; // Ensure there are characters to choose from
 
     const randomIndex = Math.floor(Math.random() * characters.length);
-    return characters[randomIndex].hiragana;
+    return characters[randomIndex].katakana;
   };
 
   // Use the character level as needed
-  // console.log(`The character ${pairing?.hiragana} is in level ${characterLevel}.`);
+  // console.log(`The character ${pairing?.katakana} is in level ${characterLevel}.`);
 
   if (remainingCharacters?.length === 0) {
     return (
         <Background>
         <h1 className="h-screen flex justify-center items-center flex-col font-bold text-white">
           <GameBird state="happy" className="absolute animate animate-bounce z-10  mb-80"/>
-          <div className="absolute mt-80 w-1/3 h-1/2 bg-white border-8 border-yellow-700 p-12 rounded-xl drop-shadow-xl text-center">
+          <div className="absolute mt-80 w-1/3 h-1/2 bg-white p-12 rounded-xl drop-shadow-xl border-8 border-yellow-700 text-center">
             <h2 className="text-green-600 text-4xl">Good work!</h2>
             <br/>
             <h2 className="text-black text-xl mt-4">You have completed the lesson!</h2>
@@ -203,7 +203,7 @@ const handleFirstButtonClick = () => {
               <h2 className="text-black text-xl">Study more, or try the game!</h2>
             <button className=" text-white text-2xl drop-shadow-lg mt-10 bg-green-600 hover:bg-white hover:border-green-600 hover:text-green-600 border-2 border-green-600 p-2 rounded-lg" onClick={() => window.location.reload()}>Play Again!</button>
             <br/>
-            <a href="/hiragana" className="flex bg-yellow-50 py-1 px-2 hover:bg-yellow-100 border-yellow-700 hover:text-black border-2 rounded-lg  mt-8 cursor-pointer items-center justify-center font-bold text-lg text-black w-4/6 mx-auto">Return to Hiragana Lessons!</a>
+            <a href="/katakana" className="flex bg-yellow-50 py-1 px-2 hover:bg-yellow-100 border-yellow-700 hover:text-black border-2 rounded-lg  mt-8 cursor-pointer items-center justify-center font-bold text-lg text-black w-4/6 mx-auto">Return to Katakana Lessons!</a>
 
           </div>
 
@@ -233,8 +233,8 @@ const handleFirstButtonClick = () => {
   <GameBird state={birdState} className="drops-shadow-xl absolute mr-96 mt-40 z-10" />
   <div id="question-card" className="relative drop-shadow-xl ml-52 shadow-xl bg-white border-8 border-yellow-700 rounded-xl h-96 w-1/4 flex items-center justify-center">
   <div className="w-full h-full flex flex-col items-center justify-start">
-    <h2 className="text-2xl mt-6 mb-6">Find the Hiragana for:</h2>
-    <h2 className="text-7xl  font-bold">{questionCharacter}</h2>
+    <h2 className="text-2xl mt-6 mb-6">Find the Katakana for:</h2>
+    <h2 className="text-7xl font-bold">{questionCharacter}</h2>
         <div
           style={{
             display: " flex",
@@ -248,10 +248,10 @@ const handleFirstButtonClick = () => {
             className="mt-12 px-8 py-4 text-4xl rounded-lg drop-shadow-lg inner-shadow bg-yellow-50 hover:bg-yellow-100 border-4 border-yellow-700"
             onClick={handleFirstButtonClick}
           >
-            {hiraganaLevelData
+            {KatakanaLevelData
               .find((levelData: any) => levelData.level === Number(level))
-              ?.hiragana.find((pairing: any) => pairing.english === questionCharacter)
-              ?.hiragana}
+              ?.katakana.find((pairing: any) => pairing.english === questionCharacter)
+              ?.katakana}
           </button>
 
           {/* Incorrect Button */}
@@ -266,7 +266,7 @@ const handleFirstButtonClick = () => {
           </button>
           
         </div>
-        <a href="/hiragana" className="flex bg-yellow-50 py-1 px-2 hover:bg-yellow-100 border-yellow-700 hover:text-black border-2 rounded-lg  mt-8 cursor-pointer items-center justify-center font-bold text-lg text-black w-4/6 mx-auto">Return to Hiragana Lessons!</a>
+        <a href="/katakana" className="flex bg-yellow-50 py-1 px-2 hover:bg-yellow-100 border-yellow-700 hover:text-black border-2 rounded-lg  mt-8 cursor-pointer items-center font-bold text-md text-black">Return to Katakana Lessons!</a>
 
       </div>
       

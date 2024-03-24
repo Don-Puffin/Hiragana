@@ -14,8 +14,8 @@ export default function GameBird({state, className}: {
         <div className={className}>
             <img
             src={images[state]}
-            alt="Enaga-Chan"
-            className="h-96 "
+            alt="Miki-Chan the Shima-Enaga"
+            className="h-96"
             />
         </div>
       )

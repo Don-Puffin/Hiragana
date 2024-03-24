@@ -1,148 +1,120 @@
-export const hiraganaLevelData = [
+export const kanjiLevelData = [
     {
-        level: 1, 
-        hiragana: [
-            { hiragana: "あ", english: "a" },
-            { hiragana: "い", english: "i" },
-            { hiragana: "う", english: "u" },
-            { hiragana: "え", english: "e" },
-            { hiragana: "お", english: "o" }
-        ]
-    },
-    {  
-        level: 2, 
-        hiragana: [
-        { hiragana: "か", english: "ka" }, 
-        { hiragana: "き", english: "ki" },
-        { hiragana: "く", english: "ku" },
-        { hiragana: "け", english: "ke" },
-        { hiragana: "こ", english: "ko" },
+        level: 1,
+        kanji: [
+            { kanji: "一", english: "one" },
+            { kanji: "二", english: "two" },
+            { kanji: "三", english: "three" },
+            { kanji: "四", english: "four" }
         ]
     },
     {
-        level: 3, 
-        hiragana: [
-        { hiragana: "さ", english: "sa" }, 
-        { hiragana: "し", english: "shi" },
-        { hiragana: "す", english: "su" },
-        { hiragana: "せ", english: "se" },
-        { hiragana: "そ", english: "so" },
+        level: 2,
+        kanji: [
+            { kanji: "五", english: "five" },
+            { kanji: "六", english: "six" },
+            { kanji: "七", english: "seven" },
+            { kanji: "八", english: "eight" }
         ]
     },
     {
-        level: 4, 
-        hiragana: [
-        { hiragana: "た", english: "ta" }, 
-        { hiragana: "ち", english: "chi" },
-        { hiragana: "つ", english: "tsu" },
-        { hiragana: "て", english: "te" },
-        { hiragana: "と", english: "to" },
+        level: 3,
+        kanji: [
+            { kanji: "九", english: "nine" },
+            { kanji: "十", english: "ten" },
+            { kanji: "百", english: "hundred" },
+            { kanji: "千", english: "thousand" }
         ]
     },
     {
-        level: 5, 
-        hiragana: [
-        { hiragana: "な", english: "na" }, 
-        { hiragana: "に", english: "ni" },
-        { hiragana: "ぬ", english: "nu" },
-        { hiragana: "ね", english: "ne" },
-        { hiragana: "の", english: "no" },
+        level: 4,
+        kanji: [
+            { kanji: "万", english: "ten thousand" },
+            { kanji: "右", english: "right" },
+            { kanji: "左", english: "left" },
+            { kanji: "口", english: "mouth" }
         ]
     },
     {
-        level: 6, 
-        hiragana: [
-        { hiragana: "は", english: "ha" }, 
-        { hiragana: "ひ", english: "hi" },
-        { hiragana: "ふ", english: "fu" },
-        { hiragana: "へ", english: "he" },
-        { hiragana: "ほ", english: "ho" },
+        level: 5,
+        kanji: [
+            { kanji: "目", english: "eye" },
+            { kanji: "耳", english: "ear" },
+            { kanji: "手", english: "hand" },
+            { kanji: "足", english: "foot" }
         ]
     },
     {
-        level: 7, 
-        hiragana: [
-        { hiragana: "ま", english: "ma" }, 
-        { hiragana: "み", english: "mi" },
-        { hiragana: "む", english: "mu" },
-        { hiragana: "め", english: "me" },
-        { hiragana: "も", english: "mo" },
+        level: 6,
+        kanji: [
+            { kanji: "玉", english: "ball" },
+            { kanji: "火", english: "fire" },
+            { kanji: "水", english: "water" },
+            { kanji: "木", english: "tree" }
         ]
     },
     {
-        level: 8, 
-        hiragana: [
-        { hiragana: "や", english: "ya" }, 
-        { hiragana: "ゆ", english: "yu" },
-        { hiragana: "よ", english: "yo" },
+        level: 7,
+        kanji: [
+            { kanji: "日", english: "sun" },
+            { kanji: "月", english: "moon" },
+            { kanji: "田", english: "rice field" },
+            { kanji: "山", english: "mountain" }
         ]
     },
     {
-        level: 9,   
-        hiragana: [
-        { hiragana: "ら", english: "ra" }, 
-        { hiragana: "り", english: "ri" },
-        { hiragana: "る", english: "ru" },
-        { hiragana: "れ", english: "re" },
-        { hiragana: "ろ", english: "ro" },
+        level: 8,
+        kanji: [
+            { kanji: "川", english: "river" },
+            { kanji: "土", english: "soil" },
+            { kanji: "王", english: "king" },
+            { kanji: "石", english: "stone" }
         ]
     },
     {
-        level: 10, 
-        hiragana: [
-        { hiragana: "わ", english: "wa" }, 
-        { hiragana: "を", english: "wo" },
-        { hiragana: "ん", english: "n" },
+        level: 9,
+        kanji: [
+            { kanji: "青", english: "blue" },
+            { kanji: "空", english: "sky" },
+            { kanji: "中", english: "inside" },
+            { kanji: "町", english: "town" }
         ]
     },
-    { 
-        level: 11, 
-        hiragana: [
-        { hiragana: "が", english: "ga" }, 
-        { hiragana: "ぎ", english: "gi" },
-        { hiragana: "ぐ", english: "gu" },
-        { hiragana: "げ", english: "ge" },
-        { hiragana: "ご", english: "go" },
+    {
+        level: 10,
+        kanji: [
+            { kanji: "雨", english: "rain" },
+            { kanji: "花", english: "flower" },
+            { kanji: "草", english: "grass" },
+            { kanji: "林", english: "woods" }
         ]
     },
-    { 
-        level: 12, 
-        hiragana: [
-        { hiragana: "ざ", english: "za" }, 
-        { hiragana: "じ", english: "dji" },
-        { hiragana: "ず", english: "dzu" },
-        { hiragana: "ぜ", english: "ze" },
-        { hiragana: "ぞ", english: "zo" },
+    {
+        level: 11,
+        kanji: [
+            { kanji: "本", english: "book" },
+            { kanji: "村", english: "village" },
+            { kanji: "男", english: "man" },
+            { kanji: "女", english: "woman" }
         ]
     },
-    { 
-        level: 13, 
-        hiragana: [
-        { hiragana: "だ", english: "da" }, 
-        { hiragana: "ぢ", english: "ji" },
-        { hiragana: "づ", english: "zu" },
-        { hiragana: "で", english: "de" },
-        { hiragana: "ど", english: "do" },
+    {
+        level: 12,
+        kanji: [
+            { kanji: "母", english: "mother" },
+            { kanji: "父", english: "father" },
+            { kanji: "牛", english: "cow" },
+            { kanji: "魚", english: "fish" }
         ]
     },
-    { 
-        level: 14, 
-        hiragana: [
-        { hiragana: "ば", english: "ba" }, 
-        { hiragana: "び", english: "bi" },
-        { hiragana: "ぶ", english: "bu" },
-        { hiragana: "べ", english: "be" },
-        { hiragana: "ぼ", english: "bo" },
+    {
+        level: 13,
+        kanji: [
+            { kanji: "虫", english: "insect" },
+            { kanji: "鳥", english: "bird" },
+            { kanji: "食", english: "eat" },
+            { kanji: "飲", english: "drink" }
         ]
-    },
-    { 
-        level: 15, 
-        hiragana: [
-        { hiragana: "ぱ", english: "pa" }, 
-        { hiragana: "ぴ", english: "pi" },
-        { hiragana: "ぷ", english: "pu" },
-        { hiragana: "ぺ", english: "pe" },
-        { hiragana: "ぽ", english: "po" },
-        ]
-    },
-]
+    }
+
+];

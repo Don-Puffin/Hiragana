@@ -145,14 +145,14 @@ if (remainingCharacters?.length === 0) {
   <Background>
      
     <div className="">
-      <div className="opacity-80 rounded-lg bg-white p-4">
-        <h1 className="text-5xl font-bold text-yellow-600 z-10 text-center ">{capitalizedAlphabet} Challenge! </h1>
+      <div className=" rounded-lg p-4">
+      <h1 className="text-4xl font-bold bg-yellow-50 w-1/4 mx-auto rounded-lg px-4 py-2 border-4 border-yellow-700 text-black text-center">{capitalizedAlphabet} Challenge!</h1>
         </div>
         <br/><br/><br/><br/><br/>
         
             <div className="flex gap-10 items-center justify-center">
-            <GameBird state={birdState} className="absolute mr-60 mt-36 drop-shadow-2xl z-10"/>
-            <Question character={questionCharacter} className="absolute top-40 ml-60 mx-auto mt-28"/>            </div>
+            <GameBird state={birdState} className="absolute mr-72 mt-36 drop-shadow-2xl z-10"/>
+            <Question character={questionCharacter} className="absolute top-36 ml-60 mx-auto mt-28"/>            </div>
             <GameGrid currentAlphabet={japaneseOnly} onButtonClick={handleButtonClick} className="mt-40 drop-shadow-2xl"/>
             </div>
             <img src="tree grid 3.png" className="h-1/2 mx-auto"/>
