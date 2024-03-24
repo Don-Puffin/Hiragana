@@ -5,10 +5,8 @@ import { useEffect, useState } from 'react';
 import { ReactNode } from 'react';
 
 const BackgroundImages = [
-  '/gameBackgrounds/park.png',
-  '/gameBackgrounds/garden.png',
-  '/gameBackgrounds/fuji.png',
-  '/gameBackgrounds/trees6.png'
+  '/gameBackgrounds/cherryblossoms7.png',
+  '/gameBackgrounds/cherryblossoms4.png',
 ];
 
 // 'children' prop is a special one (apparently), allows you to use the component as a parent component and pass in other components.

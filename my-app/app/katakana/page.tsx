@@ -1,94 +1,40 @@
-// // 1. Ensure only go through each 'character' once so we can end game (otherwise be infinitely asked all characters)
-// // 2. Set questionCharacter - 'character' (in bigger box on left) -> pulls from 'remainingCharacters'
-// // 3. remainingCharacters is a filtered copy of the main HirganaDummyData array, filtering out characters already used (see step 1)
-// // 4. When clicked -if wrong answer - bird is unhappy, if right answer -> bird is happy (returns to 'normal face' after 1 second)
-// // 5. If correct character found (characterClicked === questionCharacter), remainingCharacters checks if any left (i.e. if completed game).
-// // 6. If game completed - bird state is happy and bouncing animation occurs
+import { NextPage } from "next";
+import Link from "next/link";
+import { KatakanaLevelData } from "@/constants/KatakanaLevelData";
 
+const katakanaIndex: NextPage = () => {
+  return (
+    <main className="flex flex-col items-center justify-center h-screen space-y-5">
+      <div className="space-y-4 ">
+      <h1 className="text-4xl font-bold text-center text-yellow-700">Katakana Alphabet</h1>
+        <div className="items-center text-center">
+        <h2 className="text-2xl font-bold text-center">Start learning by choosing a group of Katakana!</h2>
+        <br/>
+        <h3 >We recommend starting from level 1 first, and then making your way down the list!</h3>
+        <p>The Katakana characters are grouped based on their consonant sounds in Japanese alphabetical order. </p>
+        <p>For example, all of the 'd' sounds are grouped together. </p>
+       
+        </div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+          {KatakanaLevelData.map((level, index) => (
+            <Link
+            href={`/katakana/Levels?alphabet=katakana&level=${level.level}`}
+            key={index}
+          >
+            <button className="w-72 bg-yellow-50 hover:bg-yellow-100 border-4 border-yellow-700 text-black text-2xl drop-shadow-lg rounded-xl px-4 py-4 font-bold">
+              <span className="mr-1 font-normal text-yellow-700 ">{index + 1})</span>
+              {level.katakana.map((char) => char.katakana).join(" ")}
+            </button>
+          </Link>
+          ))}
+        </div>
+      </div>
+      <p className="text-2xl">When you're ready, practice what you've learnt:</p>
+      <Link href="/game?alphabet=katakana">
+      <button className= "bg-emerald-400 hover:bg-emerald-300 border-4 shadow-lg border-green-700  mb-12 text-white text-4xl  rounded-xl drop-shadow-lg px-4 py-2">Play the Game!</button>
+      </Link>
+    </main>
+  );
+};
 
-// 'use client'
-// import { useState, useEffect } from 'react'
-// import { NextPage } from "next";
-// import Background from "@/components/Backgrounds"
-// import KatakanaGameGrid from "@/components/KatakanaGameGrid"
-// import Question from "@/components/Question"
-// import GameBird from "@/components/gameBird"
-// import { katakanaDummyData } from "@/constants/KatakanaDummyData";
-
-// const onlyEnglish = katakanaDummyData.map((character) => character.english); //creates an array of only the english characters from the main array
-
-// const katakanaGame  : NextPage = () => {
-//   const [remainingCharacters, setRemainingCharacters] = useState(onlyEnglish); //copy of main array, used to keep track of which characters have not been shown yet
-//   const [questionCharacter, setQuestionCharacter] =useState<string | undefined>(undefined); //sets the character in the big box that user needs to find
-//   const [birdState, setBirdState] = useState<'happy' | 'neutral' | 'sad'>('neutral') //image of bird - set to neutral 
-//   const [gameIsComplete, setGameIsComplete] =useState<boolean>(false)
-
-
-  
-
-//   useEffect(() => {
-//     const randomCharacter = getNewCharacter()
-//     console.log(randomCharacter)
-//     setQuestionCharacter(randomCharacter)
-//   },[])
-
- 
-//   const gameComplete = () => {
-//     setGameIsComplete(true) //prop for gameBird - triggers bouncing
-//     setBirdState("happy") //sets bird to happy face
-//     //need more logic to restart the game
-//   }
-
-//   const getNewCharacter = () => {
-//     if (remainingCharacters.length === 0) { //checks if game is over, completed all characters
-//       gameComplete();
-//       setRemainingCharacters(onlyEnglish); //resets array which tracks how many characters are left. Ready for next game
-//       return;
-//     }
-//     const randomIndex = Math.floor(Math.random() * remainingCharacters.length); //if still characters left - chooses a random one to show in big box
-//     const newCharacter = remainingCharacters[randomIndex];//sets new character (to be shown) to the random index above
-//     setRemainingCharacters(remainingCharacters.filter((_, index) => index !== randomIndex)); //sets remainCharacters to a new array, with the random index removed - i.e. removed the character from the list of remaining possible characters
-//     return newCharacter;
-//   }
-
-//   const handleButtonClick = (characterClicked: string) => {
-//     console.log(characterClicked)
-//     console.log(questionCharacter)
-
-
-//     const indexOfAnswer = katakanaDummyData.findIndex((character) => character.english === questionCharacter) //finds the index of the character in the main array
-//     const indexOfGuess = katakanaDummyData.findIndex((character) => character.katakana === characterClicked) //finds the index of the character in the main array
-
-//     console.log(indexOfAnswer)
-//     console.log(indexOfGuess)
-
-
-
-//     if (indexOfAnswer === indexOfGuess) { //checks if user is correct, whether character user clicked from the main grid was same as one in the big box.
-//     // if yes, bird is happy for 1000ms the returns to neutral. 
-//     console.log("correct")
-//       setBirdState('happy')
-//       setTimeout(() => {
-//         setBirdState('neutral');
-//         const newCharacter = getNewCharacter();
-//         setQuestionCharacter(newCharacter); // if user is correct, gets a new character
-//       },1000)
-//     } else {
-//       console.log("incorrect")
-//       setBirdState("sad")
-//       setTimeout(() => setBirdState('neutral'),1000)
-//     }
-//   };
-  
-//   return (
-//     <Background>
-//       <main className="min-h-screen flex items-center justify-center">
-//         <GameBird state={birdState} className = {gameIsComplete ? 'animate-bounce' : ""} />
-//         <Question character={questionCharacter} />
-//         <KatakanaGameGrid onButtonClick={handleButtonClick} />
-//       </main>
-//     </Background>
-//   );
-// }
-
-// export default katakanaGame;
+export default katakanaIndex;
