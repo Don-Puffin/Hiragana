@@ -20,7 +20,7 @@ const items = [
     id: 3,
     title: 'Kanji',
     link: 'kanji',
-    bgImage: "/kanjicard2.png"
+    bgImage: "/kanjicard3.png"
   }
 ];
 
@@ -66,7 +66,7 @@ const LandingPage: NextPage = () => {
   return (
     <main>
       <div className="text-center mt-20">
-      <h2 className="text-5xl font-bold mb-6 text-yellow-100" style={{ textShadow: '2px 2px 4px #000000' }}>Pick an alphabet to get started!</h2>        <h2 className="mt-6">The Japanese language consists of three alphabets, and you'll need to master them all!</h2>
+      <h2 className="text-5xl font-bold mb-6 text-yellow-700">Pick an alphabet to get started!</h2>        <h2 className="mt-6">The Japanese language consists of three alphabets, and you'll need to master them all!</h2>
         <h2>We recommend starting with Hiragana, then moving on to Katakana, and finally Kanji!</h2>
       </div>
       <div className="flex items-center justify-center mt-10">

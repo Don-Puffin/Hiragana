@@ -31,7 +31,7 @@ const kanjiIndex: NextPage = () => {
       </div>
       <p className="text-2xl">When you're ready, practice what you've learnt:</p>
       <Link href="/game?alphabet=kanji">
-      <button className= "bg-emerald-400 hover:bg-emerald-300 border-4 shadow-lg border-green-700  mb-12 text-white text-4xl  rounded-xl drop-shadow-lg px-4 py-2">Play the Game!</button>
+      <button className= "bg-yellow-50 hover:bg-yellow-100 border-4 shadow-lg border-yellow-700  mb-12 text-black text-4xl font-bold  rounded-xl drop-shadow-lg px-5 py-3">Play the Game!</button>
       </Link>
     </main>
   );
