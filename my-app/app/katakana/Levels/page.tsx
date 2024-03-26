@@ -95,6 +95,7 @@ const Page = () => {
     setBirdState("happy"); // Set bird state to "happy" when the first button is clicked
     setTimeout(() => {
       setBirdState("neutral");
+      if (!questionCharacter) return;
       cycleToNextCharacter(questionCharacter); // Move the array onward after setting bird state
       setIsCheckingAnswer(false);
     }, 1000);
@@ -131,6 +132,7 @@ const Page = () => {
         setBirdState("neutral");
         setIsCheckingAnswer(false);
       }, 1000);
+      if (!pairing?.english) return;
       cycleToNextCharacter(pairing?.english);
     } else {
       console.log("Incorrect!");
