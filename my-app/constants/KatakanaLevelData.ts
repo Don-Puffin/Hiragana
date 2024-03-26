@@ -109,8 +109,8 @@ export const katakanaLevelData = [
         level: 12, 
         katakana: [
         { katakana: "ザ", english: "za" }, 
-        { katakana: "ジ", english: "dji" },
-        { katakana: "ズ", english: "dzu" },
+        { katakana: "ジ", english: "ji" },
+        { katakana: "ズ", english: "zu" },
         { katakana: "ゼ", english: "ze" },
         { katakana: "ゾ", english: "zo" },
         ]
@@ -119,8 +119,8 @@ export const katakanaLevelData = [
         level: 13, 
         katakana: [
         { katakana: "ダ", english: "da" }, 
-        { katakana: "ヂ", english: "ji" },
-        { katakana: "ヅ", english: "zu" },
+        { katakana: "ヂ", english: "dji" },
+        { katakana: "ヅ", english: "dzu" },
         { katakana: "デ", english: "de" },
         { katakana: "ド", english: "do" },
         ]
