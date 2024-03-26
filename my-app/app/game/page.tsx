@@ -23,7 +23,12 @@ const identifyAndReturnAlphabet = (alphabet: string) => {
 const Page = () => {
     const originParams = useSearchParams();
     const alphabet = originParams!.get("alphabet");
-    const capitalizedAlphabet = alphabet.charAt(0).toUpperCase() + alphabet.slice(1);
+    if (alphabet === null) {
+      return <div>Alphabet is not provided in the URL.</div>;
+  }
+
+  const capitalizedAlphabet = alphabet.charAt(0).toUpperCase() + alphabet.slice(1);
+  
     const [onlyEnglish, setOnlyEnglish] = useState<string[]>([])
     const [birdState, setBirdState] = useState<"happy" | "neutral" | "sad">("neutral")
     const [questionCharacter, setQuestionCharacter] = useState<string | undefined | null>("")
