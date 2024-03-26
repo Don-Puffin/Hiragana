@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Link from "next/link";
-import { KatakanaLevelData } from "@/constants/KatakanaLevelData";
+import { katakanaLevelData } from "@/constants/katakanaLevelData";
 
 const katakanaIndex: NextPage = () => {
   return (
@@ -16,7 +16,7 @@ const katakanaIndex: NextPage = () => {
        
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-          {KatakanaLevelData.map((level, index) => (
+          {katakanaLevelData.map((level, index) => (
             <Link
             href={`/katakana/Levels?alphabet=katakana&level=${level.level}`}
             key={index}

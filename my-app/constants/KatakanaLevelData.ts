@@ -1,4 +1,4 @@
-export const KatakanaLevelData = [
+export const katakanaLevelData = [
     {
         level: 1, 
         katakana: [
