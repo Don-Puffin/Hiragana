@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Link from "next/link";
-import { katakanaLevelData } from "@/constants/katakanaLevelData";
+import { katakanaLevelData } from "@/constants/KatakanaLevelData";
 
 const katakanaIndex: NextPage = () => {
   return (
