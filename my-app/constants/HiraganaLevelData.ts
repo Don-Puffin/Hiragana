@@ -109,8 +109,8 @@ export const hiraganaLevelData = [
         level: 12, 
         hiragana: [
         { hiragana: "ざ", english: "za" }, 
-        { hiragana: "じ", english: "dji" },
-        { hiragana: "ず", english: "dzu" },
+        { hiragana: "じ", english: "ji" },
+        { hiragana: "ず", english: "zu" },
         { hiragana: "ぜ", english: "ze" },
         { hiragana: "ぞ", english: "zo" },
         ]
@@ -119,8 +119,8 @@ export const hiraganaLevelData = [
         level: 13, 
         hiragana: [
         { hiragana: "だ", english: "da" }, 
-        { hiragana: "ぢ", english: "ji" },
-        { hiragana: "づ", english: "zu" },
+        { hiragana: "ぢ", english: "dji" },
+        { hiragana: "づ", english: "dzu" },
         { hiragana: "で", english: "de" },
         { hiragana: "ど", english: "do" },
         ]

@@ -60,14 +60,14 @@ export const katakanaDummyData = [
       { japanese: "ゲ", english: "ge" },
       { japanese: "ゴ", english: "go" },
       { japanese: "ザ", english: "za" }, 
-      { japanese: "ジ", english: "dji" },
-      { japanese: "ズ", english: "dzu" },
+      { japanese: "ジ", english: "ji" },
+      { japanese: "ズ", english: "zu" },
       { japanese: "ゼ", english: "ze" },
       { japanese: "ゾ", english: "zo" },
 
       { japanese: "ダ", english: "da" }, 
-      { japanese: "ヂ", english: "ji" },
-      { japanese: "ヅ", english: "zu" },
+      { japanese: "ヂ", english: "dji" },
+      { japanese: "ヅ", english: "dzu" },
       { japanese: "デ", english: "de" },
       { japanese: "ド", english: "do" },
 

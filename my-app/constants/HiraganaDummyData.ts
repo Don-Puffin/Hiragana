@@ -63,14 +63,14 @@ export const hiraganaDummyData = [
             { japanese: "ご", english: "go" },
          
             { japanese: "ざ", english: "za" }, 
-            { japanese: "じ", english: "dji" },
-            { japanese: "ず", english: "dzu" },
+            { japanese: "じ", english: "ji" },
+            { japanese: "ず", english: "zu" },
             { japanese: "ぜ", english: "ze" },
             { japanese: "ぞ", english: "zo" },
          
             { japanese: "だ", english: "da" }, 
-            { japanese: "ぢ", english: "ji" },
-            { japanese: "づ", english: "zu" },
+            { japanese: "ぢ", english: "dji" },
+            { japanese: "づ", english: "dzu" },
             { japanese: "で", english: "de" },
             { japanese: "ど", english: "do" },
         
