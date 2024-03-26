@@ -7,6 +7,8 @@ interface GameGridProps {
 }
 
 const GameGrid: React.FC<GameGridProps> = ({ onButtonClick, currentAlphabet, className }) => {
+  if (!currentAlphabet) return null;
+  console.log(currentAlphabet);
   return (
     <div className={`relative ${className}`}>
       <div className="grid absolute mt-4 grid-cols-4 gap-3 inset-16 mx-auto h-1/2 w-1/5" style={{ position: 'absolute', zIndex: '2' }}>

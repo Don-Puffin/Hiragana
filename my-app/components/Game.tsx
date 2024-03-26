@@ -1,8 +1,12 @@
 "use client";
 import { useSearchParams } from "next/navigation"
 import { katakanaDummyData } from "@/constants/KatakanaDummyData"
-import {useFetchHiraganaData} from "@/constants/HiraganaDummyData"
+// import {useFetchHiraganaData} from "@/constants/HiraganaDummyData"
 import { kanjiDummyData } from "@/constants/KanjiDummyData"
+import { hiraganaDummyData} from "@/constants/HiraganaDummyData"
+import { hiraganaLevelData } from "@/constants/HiraganaLevelData";
+import { katakanaLevelData } from "@/constants/KatakanaLevelData";
+import { kanjiLevelData } from "@/constants/KanjiLevelData";
 import Background from "@/components/Backgrounds"
 import GameBird from "@/components/gameBird"
 import { useState, useEffect } from "react"
@@ -10,16 +14,31 @@ import Question from "@/components/Question"
 import GameGrid from "@/components/GameGrid"
 
 
-const identifyAndReturnAlphabet = (alphabet: string) => {
-    if (alphabet === "hiragana") {
-        return 
-    } else if (alphabet === "katakana") {
-        return katakanaDummyData
-    } else if (alphabet === "kanji") {
-        return kanjiDummyData
-    }
-}
-
+const useFetchHiraganaData = (alphabet: string | null) => {
+    const [data, setData] = useState<any>(null);
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        let fetchedData;
+        if (alphabet === 'hiragana') {
+          fetchedData = hiraganaDummyData; // Assuming you have hiraganaDummyData imported
+        } else if (alphabet === 'katakana') {
+          fetchedData = katakanaDummyData; // Assuming you have katakanaDummyData imported
+        } else if (alphabet === 'kanji') {
+          fetchedData = kanjiDummyData; // Assuming you have kanjiDummyData imported
+        }
+        // Simulated asynchronous data fetching
+    
+        setData(fetchedData);
+      };
+  
+      if (alphabet) {
+        fetchData();
+      }
+    }, [alphabet]);
+  
+    return { data };
+  };
 const Page = () => {
     const originParams = useSearchParams();
     const alphabet = originParams!.get("alphabet");
@@ -37,24 +56,26 @@ const Page = () => {
     const [combined, setCombined] = useState<{ english: string, japanese: string }[]>([])
     const [incorrectAnswers, setIncorrectAnswers] = useState<string[]>([]); //sets a variable for answers
 
-    const { data , loading, error } = useFetchHiraganaData(`http://localhost:8080/generate-${alphabet}?size=20`) 
-
+    const { data } = useFetchHiraganaData(alphabet);
+    // const alphabetData = Object.entries(data).map(([key, value]) => ({ value: key, english: value }));
     console.log(data)
 
     useEffect(() => {
-        if (!alphabet) return;
-        if (!data) return;
-        let arr = [] as { english: string, japanese: string }[];
-        const arrayOfObjects = Object.entries(data).forEach(([key, value]) => {
-            console.log(key, value);
-            arr.push({
-                english: value,
-                japanese: key
-            })
-        });
+        if (!alphabet || !data) return;
+      
+        const shuffledData = Object.entries(data).map(([_, value]) => value).sort(() => Math.random() - 0.5);
+        const selectedCharacters = shuffledData.slice(0, 20);
+      
+        const arr = selectedCharacters.map((value: any) => ({
+          english: value.english,
+          japanese: value.japanese
+        }));
+
+        console.log(arr)
 
         setCombined(arr);
         const japaneseData = arr.map((character) => character.japanese);
+        console.log(japaneseData)
         const englishData = arr.map((character) => character.english);
         setOnlyEnglish(englishData);
         setJapaneseOnly(japaneseData);
@@ -157,7 +178,8 @@ if (remainingCharacters?.length === 0) {
         
             <div className="flex gap-10 items-center justify-center">
             <GameBird state={birdState} className="absolute mr-72 mt-36 drop-shadow-2xl z-10"/>
-            <Question character={questionCharacter} className="absolute top-36 ml-60 mx-auto mt-28"/>            </div>
+            <Question character={questionCharacter} className="absolute top-36 ml-60 mx-auto mt-28"/>            
+            </div>
             <GameGrid currentAlphabet={japaneseOnly} onButtonClick={handleButtonClick} className="mt-40 drop-shadow-2xl"/>
             </div>
             <img src="tree grid 3.png" className="h-1/2 mx-auto"/>

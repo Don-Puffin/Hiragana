@@ -1,6 +1,6 @@
 "use client";
 import { useSearchParams } from "next/navigation";
-import { KatakanaLevelData } from "@/constants/KatakanaLevelData";
+import { katakanaLevelData } from "@/constants/KatakanaLevelData";
 import { katakanaDummyData } from "@/constants/KatakanaDummyData";
 import { kanjiDummyData } from "@/constants/KanjiDummyData";
 import Background from "@/components/Backgrounds-learn";
@@ -12,7 +12,7 @@ import GameGrid from "@/components/GameGrid";
 const identifyAndReturnAlphabet = (alphabet: string) => {
   console.log("Identifying and returning alphabet", alphabet);
   if (alphabet === "katakana") {
-    return KatakanaLevelData;
+    return katakanaLevelData;
   }
 };
 
@@ -23,7 +23,7 @@ const Page = () => {
   console.log(alphabet);
   console.log(level);
 
-  const LevelData = KatakanaLevelData.find(
+  const LevelData = katakanaLevelData.find(
     (levelData: any) => levelData.level === Number(level)
   );
   console.log(LevelData);
@@ -113,7 +113,7 @@ const Page = () => {
 
     // const arrayToCheck = identifyAndReturnAlphabet(alphabet!)?.map((level))
 
-    const getArrayOfCorrespondingLevel = KatakanaLevelData.find(
+    const getArrayOfCorrespondingLevel = katakanaLevelData.find(
       (levelData: any) => levelData.level === level
     );
     console.log(getArrayOfCorrespondingLevel);
@@ -145,7 +145,7 @@ const Page = () => {
   };
 
   console.log(
-    KatakanaLevelData
+    katakanaLevelData
       .find((levelData: any) => levelData.level === Number(level))
       ?.katakana.find((pairing: any) => pairing.english === questionCharacter)
       ?.katakana
@@ -153,7 +153,7 @@ const Page = () => {
 
   const getRandomCharacter = () => {
     console.log("getting");
-    const levelData = KatakanaLevelData.find(
+    const levelData = katakanaLevelData.find(
       (levelData: any) => levelData.level === Number(level)
     );
     if (!levelData) return ""; // Ensure level data is found
@@ -270,7 +270,7 @@ const Page = () => {
                 onClick={handleFirstButtonClick}
               >
                 {
-                  KatakanaLevelData
+                  katakanaLevelData
                     .find((levelData: any) => levelData.level === Number(level))
                     ?.katakana.find(
                       (pairing: any) => pairing.english === questionCharacter
